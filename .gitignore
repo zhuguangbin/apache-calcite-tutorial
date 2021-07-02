@@ -220,3 +220,15 @@ local.properties
 *.iml
 .idea
 
+# ignore target
+calcite-tutorial-0-translation/target/
+calcite-tutorial-1-basic/target/
+calcite-tutorial-2-parser/parser-1-fmpp-tutorial/target/
+calcite-tutorial-2-parser/parser-2-javacc-tutorial/target/
+calcite-tutorial-2-parser/parser-3-calcite-tutorial/target/
+calcite-tutorial-2-parser/parser-4-calcite-custom-tutorial/target/
+calcite-tutorial-3-schema/target/
+calcite-tutorial-4-validator/validator-1-calcite-validator/target/
+calcite-tutorial-9-rule/target/
+calcite-tutorial-common/target/
+
