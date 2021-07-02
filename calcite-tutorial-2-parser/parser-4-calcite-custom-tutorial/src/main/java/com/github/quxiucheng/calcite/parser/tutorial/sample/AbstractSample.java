@@ -1,6 +1,6 @@
 package com.github.quxiucheng.calcite.parser.tutorial.sample;
 
-import com.github.quxiucheng.calcite.parser.tutorial.CustomSqlParserImpl;
+import com.github.quxiucheng.calcite.parser.tutorial.MyCustomSqlParserImpl;
 import org.apache.calcite.config.Lex;
 import org.apache.calcite.sql.parser.SqlParser;
 
@@ -11,7 +11,7 @@ import org.apache.calcite.sql.parser.SqlParser;
 public abstract class AbstractSample {
     public static SqlParser.Config mysqlConfig = SqlParser.configBuilder()
             // 定义解析工厂
-            .setParserFactory(CustomSqlParserImpl.FACTORY)
+            .setParserFactory(MyCustomSqlParserImpl.FACTORY)
             .setLex(Lex.MYSQL)
             .build();
     public static SqlParser parser = SqlParser.create("", mysqlConfig);

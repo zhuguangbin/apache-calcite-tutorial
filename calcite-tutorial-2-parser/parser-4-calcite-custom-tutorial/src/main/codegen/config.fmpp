@@ -37,7 +37,7 @@ data: {
     # 包目录
     package: "com.github.quxiucheng.calcite.parser.tutorial",
     # 类文件
-    class: "CustomSqlParserImpl",
+    class: "MyCustomSqlParserImpl",
 
     # List of import statements.
     # Example. "org.apache.calcite.sql.*", "java.util.List".
@@ -388,6 +388,7 @@ data: {
     # 用于解析自定义SQL语句的方法列表。
     statementParserMethods: [
         "SqlCreateFunction()"
+        "SqlCreateCatalog()"
         # 测试信息
         "LiteralSample()"
         "UnsignedNumericLiteralSample()"

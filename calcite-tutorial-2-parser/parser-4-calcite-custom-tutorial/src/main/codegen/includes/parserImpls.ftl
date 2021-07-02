@@ -89,6 +89,62 @@ SqlNode SqlCreateFunction() :
     }
 }
 
+SqlNode SqlCreateCatalog():
+{
+    // 声明变量
+    SqlParserPos createPos;
+    SqlParserPos propertyPos;
+    boolean isTemporary = false;
+    SqlNode catalogName = null;
+    SqlNodeList properties = null;
+}
+{
+    // create 关键字
+    <CREATE>
+    {
+        // 获取当前token的行列位置
+        createPos = getPos();
+    }
+    [
+        <TEMPORARY> { isTemporary = true; }
+    ]
+    // catalog 关键字
+    <CATALOG>
+    // 函数名
+    catalogName = CompoundIdentifier()
+
+	// if
+    [
+        // with 关键字,设置初始化变量
+        <WITH>
+        {
+            // 获取关键字位置
+            propertyPos = getPos();
+            SqlNode property;
+            properties = new SqlNodeList(propertyPos);
+        }
+        <LPAREN>
+        [
+            property = PropertyValue()
+            {
+                properties.add(property);
+            }
+            (
+                <COMMA>
+                {
+                    property = PropertyValue();
+                    properties.add(property);
+                }
+            )*
+        ]
+        <RPAREN>
+    ]
+
+    {
+        return new SqlCreateCatalog(createPos, catalogName, isTemporary, properties);
+    }
+}
+
 JAVACODE String StringLiteralValue() {
     SqlNode sqlNode = StringLiteral();
     return ((NlsString) SqlLiteral.value(sqlNode)).getValue();

@@ -36,6 +36,7 @@ public class SqlCreateFunction extends SqlCall {
         this.className = className;
         this.properties = properties;
         this.methodName = methodName;
+        this.comment = comment;
     }
 
     public SqlNode getFunctionName() {
@@ -97,6 +98,12 @@ public class SqlCreateFunction extends SqlCall {
             }
             writer.newlineAndIndent();
             writer.endList(propertyFrame);
+        }
+
+        if (comment != null) {
+            writer.newlineAndIndent();
+            writer.keyword("COMMENT");
+            writer.print("'" + comment + "'");
         }
     }
 }
